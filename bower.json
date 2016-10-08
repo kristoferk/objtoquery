@@ -6,7 +6,7 @@
     "kristoferk"
   ],
   "description": "Converts a javascript object to an url query string",
-  "main": "dist/objtoquery.min.js",
+  "main": "dist/objtoquery.js",
   "moduleType": [
     "globals"
   ],
