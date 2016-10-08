@@ -1,6 +1,6 @@
 {
   "name": "objtoquery",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "homepage": "https://github.com/kristoferk/objtoquery",
   "authors": [
     "kristoferk"
@@ -21,7 +21,10 @@
     "node_modules",
     "bower_components",
     "spec",
-    "src"
+    "src",
+    "Gruntfile.js",
+    ".travis.yml",
+    ".npmignore"
   ]
 }
 

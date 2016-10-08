@@ -41,7 +41,7 @@ ObjToQueryFunctions = {
                 }
             }
 
-            if (options.toLower) {
+            if (options.toLower && key.toLowerCase) {
                 key = key.toLowerCase();
             }
 

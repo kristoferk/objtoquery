@@ -1,4 +1,6 @@
 .git*
 src/
 spec/
+.npmignore
 .travis.yml
+Gruntfile.js
