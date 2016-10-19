@@ -3,7 +3,7 @@
 
 ![](https://api.travis-ci.org/kristoferk/objtoquery.svg?branch=master)
 
-Converts a javascript object to an url query string
+Converts a javascript object to a url query string
 
 
 ## Installation
