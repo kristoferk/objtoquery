@@ -1,7 +1,7 @@
 {
   "name": "objtoquery",
   "description": "Convert javascription object to query string",
-  "version": "0.9.2",
+  "version": "1.0.0",
   "author": "kristoferk",
   "keywords": [ "javascript" ],
   "devDependencies": {

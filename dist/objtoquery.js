@@ -7,18 +7,32 @@
 //
 // http://github.com/kristoferk/objtoquery
 
-ObjToQueryFunctions = {
-    ToQuery: function (a, options) {
-        function isArray(obj) {
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD
+        define([], factory);
+    } else if (typeof exports === 'object') {
+        // Node, CommonJS-like
+        module.exports = factory();
+    } else {
+        // Browser globals (root is window)
+        root.objToQuery = factory();
+    }
+}(this, function () {
+    function objToQuery(a, options){
+        var isArray = function(obj) {
             return Object.prototype.toString.call(obj) === '[object Array]';
-        }
-        function type(obj) {
+        };
+
+        var type = function(obj) {
             return Object.prototype.toString.call(obj).replace(/^\[object (.+)\]$/, '$1').toLowerCase();
-        }
-        function isFunction(obj) {
+        };
+
+        var isFunction = function(obj) {
             return type(obj) === "function";
-        }
-        function buildParams(prefix, obj, traditional, add) {
+        };
+
+        var buildParams = function(prefix, obj, traditional, add) {
             var name;
 
             if (isArray(obj)) {
@@ -31,12 +45,14 @@ ObjToQueryFunctions = {
                 }
             } else if (type(obj) === "object") {
                 for (name in obj) {
-                    buildParams(prefix + "." + name, obj[name], traditional, add);
+                    if (obj.hasOwnProperty(name)) {
+                        buildParams(prefix + "." + name, obj[name], traditional, add);
+                    }
                 }
             } else {
                 add(prefix, obj);
             }
-        }
+        };
 
         options = options || {};
         var stringValues = [];
@@ -44,14 +60,13 @@ ObjToQueryFunctions = {
             // If value is a function, invoke it and return its value
             value = isFunction(value) ? value() : (value == null ? "" : value);
 
-            // no need to add values that are not used, they clog the url
             if (options.removeEmptyValues) {
                 if (value.length === 0) {
                     return;
                 }
             }
 
-            if (options.toLower) {
+            if (options.toLower && key.toLowerCase) {
                 key = key.toLowerCase();
             }
 
@@ -63,11 +78,15 @@ ObjToQueryFunctions = {
         };
 
         for (var prefix in a) {
-            buildParams(prefix, a[prefix], false, add);
+            if (a.hasOwnProperty(prefix)) {
+                buildParams(prefix, a[prefix], false, add);
+            }
         }
 
         var r20 = /%20/g;
         // Return the resulting serialization
         return stringValues.join("&").replace(r20, "+");
-    }
-};
+    };
+
+    return objToQuery;
+}));
