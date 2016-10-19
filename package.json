@@ -1,6 +1,6 @@
 {
   "name": "objtoquery",
-  "description": "Convert javascription object to query string",
+  "description": "Converts a javascript object to a url query string",
   "version": "1.0.0",
   "author": "kristoferk",
   "keywords": [ "javascript" ],
