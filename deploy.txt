@@ -1,4 +1,4 @@
 > Set version number in bwoer.json and package.json
 > grunt default
 > npm publish
-> bower register
+> Sign in to github and create release

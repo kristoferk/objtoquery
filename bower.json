@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "homepage": "https://github.com/kristoferk/objtoquery",
   "authors": [
-    "kristoferk"
+    { "name": "kristoferk" }
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kristoferk/objtoquery.git"
+  },
   "description": "Converts a javascript object to an url query string",
   "main": "dist/objtoquery.js",
   "moduleType": [
