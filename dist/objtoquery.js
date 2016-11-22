@@ -1,6 +1,6 @@
 // objtoquery
 // ------------
-// v1.0.0
+// v1.0.1
 //
 // Copyright (c) 2012-2016 Kristofer Karlsson
 // Distributed under MIT license
@@ -38,7 +38,7 @@
             if (isArray(obj)) {
                 if (obj.length) {
                     for (var i = 0; i < obj.length; ++i) {
-                        add(prefix, obj[i]);
+                        buildParams(prefix, obj[i], traditional, add);
                     }
                 } else {
                     add(prefix, "");

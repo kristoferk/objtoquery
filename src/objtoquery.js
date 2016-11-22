@@ -29,7 +29,7 @@
             if (isArray(obj)) {
                 if (obj.length) {
                     for (var i = 0; i < obj.length; ++i) {
-                        add(prefix, obj[i]);
+                        buildParams(prefix, obj[i], traditional, add);
                     }
                 } else {
                     add(prefix, "");

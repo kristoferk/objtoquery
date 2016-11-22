@@ -1,8 +1,21 @@
 describe("objtoquery", function () {
-    beforeEach(function() {
+    beforeEach(function() {     
         this.input = {
             Id: 1,
             ListProperty: ['Name1', 'Name2'],
+            NullTest: '',
+            IntTest: 0,
+            BlnTest: true,
+            SubObject: {
+                Client: 'Sub'
+            },
+            Encoded: 'å'
+        };
+
+        this.inputListObject = {
+            Id: 1,
+            ListProperty: ['Name1', 'Name2'],
+            ListObjects: [{ Id: 2, Name: 'ListObjectA'}, { Id: 3, Name: 'ListObjectB'}],
             NullTest: '',
             IntTest: 0,
             BlnTest: true,
@@ -31,5 +44,10 @@ describe("objtoquery", function () {
     it("skipEncoding", function () {
         var value = objToQuery(this.input, { skipEncoding: true });
         chai.expect(value).to.equal("Id=1&ListProperty=Name1&ListProperty=Name2&NullTest=&IntTest=0&BlnTest=true&SubObject.Client=Sub&Encoded=å");
+    });
+
+    it("listObject", function () {
+        var value = objToQuery(this.inputListObject, { skipEncoding: true });
+        chai.expect(value).to.equal("Id=1&ListProperty=Name1&ListProperty=Name2&ListObjects.Id=2&ListObjects.Name=ListObjectA&ListObjects.Id=3&ListObjects.Name=ListObjectB&NullTest=&IntTest=0&BlnTest=true&SubObject.Client=Sub&Encoded=å");
     });
 });

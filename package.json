@@ -1,7 +1,7 @@
 {
   "name": "objtoquery",
   "description": "Converts a javascript object to a url query string",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "kristoferk",
   "keywords": [ "javascript" ],
   "devDependencies": {
